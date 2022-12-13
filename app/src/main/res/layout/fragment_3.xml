@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#00FFFFFF"
+    android:orientation="vertical"
+    android:id="@+id/fargemnt3"
+    tools:context=".fragment.Fragment3">
+<TextView
+    android:text="趣味短视频系统官方"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    android:textColor="#000000"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_marginBottom="40dp"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:background="#F1F8FF"
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+<LinearLayout
+    android:background="#55AAFF"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+    <EditText
+        android:id="@+id/message_text"
+        android:background="@drawable/shape4"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="20dp"
+        android:hint="请输入发送信息"
+        android:singleLine="true"
+        android:textStyle="bold"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/message_btn"
+   android:backgroundTint="#AA52E8"
+        android:layout_marginRight="10dp"
+        android:text="发送"
+        android:textColor="#E6E6E6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

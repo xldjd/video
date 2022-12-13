@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/message1"
+    android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/message_image"
+    android:src="@drawable/wode4"
+    android:layout_width="80dp"
+    android:layout_height="80dp"/>
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape5"
+        android:id="@+id/message_content"
+        android:padding="10dp"
+        android:layout_marginRight="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

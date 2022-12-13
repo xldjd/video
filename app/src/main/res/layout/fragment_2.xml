@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fargemnt2"
+    tools:context=".fragment.Fragment2">
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mViewPager">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mtablayout"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            app:tabSelectedTextColor="#ED04F4"
+            android:layout_gravity="top|center"
+            android:background="#00BB86FC"
+            app:tabIndicatorColor="#D567ED"
+            android:padding="10px"
+            app:tabIndicatorFullWidth="false"
+            app:tabTextColor="#E1B8EA" />
+    </androidx.viewpager.widget.ViewPager>
+
+
+</FrameLayout>

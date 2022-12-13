@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/message2"
+    android:layout_height="match_parent">
+<ImageView
+    android:layout_gravity="right"
+    android:id="@+id/message_image"
+    android:src="@drawable/login1"
+    android:layout_width="80dp"
+    android:layout_height="80dp"/>
+    <TextView
+        android:layout_gravity="right"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/shape6"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:text="如"
+        android:id="@+id/message_content2"
+        android:padding="10dp"
+        android:layout_marginRight="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</FrameLayout>
