@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.repository.AdminDao">
+    <resultMap id="Baseresultmap1" type="com.example.mybatis.entity.Admin">
+        <id column="id" property="id"  jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="login" resultType="com.example.mybatis.entity.Admin">
+        select `id`,`username`,`password` from user where username= #{username} and password=#{password}
+    </select>
+</mapper>

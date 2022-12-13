@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.repository.VideoDao">
+    <resultMap id="Baseresultmap2" type="com.example.mybatis.entity.Video">
+        <id column="id" property="id"  jdbcType="INTEGER"/>
+        <result column="video_name" property="video_name" jdbcType="VARCHAR"/>
+    </resultMap>
+<select id="get" resultType="com.example.mybatis.entity.Video">
+    select `id`,`video_name`,`video_image`,`video_address` from video where id = #{value}
+</select>
+
+    <select id="list" resultType="com.example.mybatis.entity.Video">
+        select `id`,`video_name`,`video_image`,`video_address` from video
+        <where>
+            <if test="id != null   and id != '-1' " > and id = #{id} </if>
+            <if test="userName != null  and userName != '' " > and user_name = #{userName} </if>
+            <if test="password != null  and password != '' " > and password = #{password} </if>
+            <if test="lastLoginTime != null  and lastLoginTime != '' " > and last_login_time = #{lastLoginTime} </if>
+            <if test="sex != null   and sex != '-1' " > and sex = #{sex} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+<!--            <otherwise>-->
+<!--                order by id desc-->
+<!--            </otherwise>-->
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <delete id="remove">
+        delete from video where id = #{value}
+    </delete>
+
+    <update id="updateAfter" parameterType="java.lang.Integer">
+        update video
+        set id=id-1
+        where id>1 and id>#{id,jdbcType=INTEGER}
+    </update>
+
+    <insert id="save" parameterType="com.example.mybatis.entity.Video" useGeneratedKeys="true" keyProperty="id" >
+        insert into video
+        (
+        `video_name`,
+        `video_image`,
+        `video_address`
+        )
+        values
+        (
+        #{video_name},
+        #{video_image},
+        #{video_address}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.example.mybatis.entity.Video">
+        update video
+        <set>
+            <if test="video_name != null">`video_name` = #{video_name}, </if>
+            <if test="video_image != null">`video_image` = #{video_image}, </if>
+            <if test=" video_address!= null">`video_address` = #{video_address} </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

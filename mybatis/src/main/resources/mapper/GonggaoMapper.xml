@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.repository.GonggaoDao">
+    <resultMap id="Baseresultmap1" type="com.example.mybatis.entity.Gonggao">
+<id column="id" property="id"  jdbcType="INTEGER"/>
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="list" resultType="com.example.mybatis.entity.Gonggao">
+        select `id`,`content`,`type` from gonggao
+        <where>
+            <if test="id != null   and id != '-1' " > and id = #{id} </if>
+            <if test="content != null  and content != '' " > and content = #{content} </if>
+            <if test="type != null  and type != '' " > and type= #{type} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+            </when>
+            <otherwise>
+<!--                order by id desc-->
+                order by id asc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <delete id="remove">
+        delete from gonggao where id = #{value}
+    </delete>
+
+    <insert id="save" parameterType="com.example.mybatis.entity.Gonggao" useGeneratedKeys="true" keyProperty="id" >
+        insert into gonggao
+        (
+        `content`,`type`
+        )
+        values
+        (
+        #{content},#{type}
+        )
+    </insert>
+
+</mapper>
+
+

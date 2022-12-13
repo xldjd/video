@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.repository.XiaoshuoDao">
+    <resultMap id="Baseresultmap2" type="com.example.mybatis.entity.Xiaoshuo">
+        <id column="id" property="id"  jdbcType="INTEGER"/>
+        <result column="xiaoshuo_image" property="xiaoshuo_image" jdbcType="VARCHAR"/>
+    </resultMap>
+<select id="get" resultType="com.example.mybatis.entity.Xiaoshuo">
+    select `id`,`xiaoshuo_image`,`title`,`content` from xiaoshuo where id = #{value}
+</select>
+
+    <select id="list" resultType="com.example.mybatis.entity.Xiaoshuo">
+        select `id`,`xiaoshuo_image`,`title`,`content`,`address` from xiaoshuo
+        <where>
+            <if test="id != null   and id != '-1' " > and id = #{id} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+<!--            <otherwise>-->
+<!--                order by id desc-->
+<!--            </otherwise>-->
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <delete id="remove">
+        delete from xiaoshuo where id = #{value}
+    </delete>
+
+    <update id="updateAfter" parameterType="java.lang.Integer">
+        update xiaoshuo
+        set id=id-1
+        where id>1 and id>#{id,jdbcType=INTEGER}
+    </update>
+
+    <insert id="save" parameterType="com.example.mybatis.entity.Xiaoshuo" useGeneratedKeys="true" keyProperty="id" >
+        insert into xiaoshuo
+        (
+        `xiaoshuo_image`,
+        `title`,
+        `content`,
+        `address`
+        )
+        values
+        (
+        #{xiaoshuo_image},
+        #{title},
+        #{content},
+        #{address}
+        )
+    </insert>
+    <update id="update" parameterType="com.example.mybatis.entity.Xiaoshuo">
+        update xiaoshuo
+        <set>
+            <if test="xiaoshuo_image != null">`xiaoshuo_image` = #{xiaoshuo_image}, </if>
+            <if test="title != null">`title` = #{title}, </if>
+            <if test="content != null">`content` = #{content}, </if>
+            <if test="address != null">`address` = #{address}</if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

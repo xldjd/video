@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.repository.UserDao">
+    <resultMap id="Baseresultmap1" type="com.example.mybatis.entity.UserDO">
+<id column="id" property="id"  jdbcType="INTEGER"/>
+        <result column="user_name" property="user_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="get" resultType="com.example.mybatis.entity.UserDO">
+        select `id`,`user_name`,`password`,`last_login_time`,`sex` from t_user where id = #{value}
+    </select>
+    <select id="list" resultType="com.example.mybatis.entity.UserDO">
+        select `id`,`user_name`,`password`,`last_login_time`,`sex`,`zhanghao` from t_user
+        <where>
+            <if test="id != null   and id != '-1' " > and id = #{id} </if>
+            <if test="userName != null  and userName != '' " > and user_name = #{userName} </if>
+            <if test="password != null  and password != '' " > and password = #{password} </if>
+            <if test="lastLoginTime != null  and lastLoginTime != '' " > and last_login_time = #{lastLoginTime} </if>
+            <if test="sex != null   and sex != '-1' " > and sex = #{sex} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+            </when>
+            <otherwise>
+<!--                order by id desc-->
+                order by id asc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="count" resultType="int">
+        select count(*) from t_user
+        <where>
+            <if test="id != null   and id != '-1'  " > and id = #{id} </if>
+            <if test="userName != null  and userName != ''  " > and user_name = #{userName} </if>
+            <if test="password != null  and password != ''  " > and password = #{password} </if>
+            <if test="lastLoginTime != null  and lastLoginTime != ''  " > and last_login_time = #{lastLoginTime} </if>
+            <if test="sex != null   and sex != '-1'  " > and sex = #{sex} </if>
+        </where>
+    </select>
+    <insert id="save" parameterType="com.example.mybatis.entity.UserDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into t_user
+        (
+        `user_name`,
+        `password`,
+        `last_login_time`,
+        `sex`,
+        `zhanghao`
+
+        )
+        values
+        (
+        #{user_name},
+        #{password},
+        #{lastLoginTime},
+        #{sex},
+        #{zhanghao}
+        )
+    </insert>
+    <update id="update" parameterType="com.example.mybatis.entity.UserDO">
+        update t_user
+        <set>
+            <if test="user_name != null">`user_name` = #{user_name}, </if>
+            <if test="zhanghao != null">`zhanghao` = #{zhanghao}, </if>
+            <if test="password != null">`password` = #{password}, </if>
+            <if test="lastLoginTime != null">`last_login_time` = #{lastLoginTime}, </if>
+            <if test="sex != null">`sex` = #{sex}</if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="remove">
+        delete from t_user where id = #{value}
+    </delete>
+
+    <update id="updateAfter" parameterType="java.lang.Integer">
+        update t_user
+        set id=id-1
+        where id>1 and id>#{id,jdbcType=INTEGER}
+    </update>
+
+
+
+    <delete id="batchRemove">
+        delete from t_user where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+<select id="login" resultType="com.example.mybatis.entity.UserDO">
+    select `id`,`user_name`,`password`,`last_login_time`,`sex`,`zhanghao`  from t_user where zhanghao = #{zhanghao} and password=#{password}
+
+</select>
+
+    <select id="fragment4" resultType="com.example.mybatis.entity.UserDO">
+        select `id`,`user_name`,`password`,`last_login_time`,`sex`,`zhanghao` from t_user where zhanghao= #{value}
+    </select>
+
+</mapper>
+
+

@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 Admin Template</title>
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
+	
+	<!-- Template Styles -->
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	
+	<!-- CSS Reset -->
+	<link rel="stylesheet" href="/css/normalize.css">
+	
+	<!-- Milligram CSS minified -->
+	<link rel="stylesheet" href="/css/milligram.min.css">
+	
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="/css/styles.css">
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+
+	<style type="text/css">
+		/*模态框*/
+		.modal-box {
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top: 1500px;
+			height: 600px;
+			left:550px;
+
+
+		}
+
+		.kl {
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top: 500px;
+			height: 600px;
+			left:550px;
+
+
+		}
+
+		.xiaoshuo{
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top:3200px;
+			height: 600px;
+			left:550px;
+
+
+		}
+		.xiaoshuo_update{
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top:3200px;
+			height: 600px;
+			left:550px;
+
+
+		}
+
+		.video{
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top:3500px;
+			height: 600px;
+			left:550px;
+
+
+		}
+		.video_update{
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top:3500px;
+			height: 600px;
+			left:550px;
+
+
+		}
+
+
+
+		.manhua{
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top:5200px;
+			height: 600px;
+			left:550px;
+
+
+		}
+
+
+		.manhua_update{
+			/*绝顶定位 相对于当前浏览器*/
+			position: absolute;
+			width: 300px;
+			/*设置为白色背景  前期可以设置为其他颜色  方便观看*/
+			background: #3ff169;
+			background-color: white;
+			top:5200px;
+			height: 600px;
+			left:550px;
+
+
+		}
+
+		/*模态框顶部*/
+		.modal-box-top {
+			/*相对于之前自己的位置定位，这个设置不会影响元素的位置，会影响子元素使用absolute定位 先不管*/
+			position: relative;
+			/*宽度随父div*/
+			width:300px;
+			height:50px;
+			/*边框线放在下面*/
+			background: #35cebe;
+			border-radius: 10px;
+			border-bottom: 1px solid #71e09d;
+			padding: 0.5rem;
+			/*使用此属性后 元素宽高固定，边距大小会从原大小中减去，也就是设置边距后元素宽高不表*/
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+		/*模态框顶部*/
+		.kl-top {
+			/*相对于之前自己的位置定位，这个设置不会影响元素的位置，会影响子元素使用absolute定位 先不管*/
+			position: relative;
+			/*宽度随父div*/
+			width:300px;
+			height:50px;
+			background: #35cebe;
+			border-radius: 10px;
+			/*边框线放在下面*/
+			border-bottom: 1px solid #71e09d;
+			padding: 0.5rem;
+			/*使用此属性后 元素宽高固定，边距大小会从原大小中减去，也就是设置边距后元素宽高不表*/
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+
+
+		/*模态框主体*/
+		.modal-box-content {
+			width: 100%;
+			height:500px;
+			padding: 0.5rem;
+			box-sizing: border-box;
+			overflow: hidden;
+			background: #eae9ea;
+			border-radius: 10px;
+			box-shadow: 1px 2px 3px #c5cad0;
+		}
+
+		/*模态框主体*/
+		.kl-content {
+			width: 100%;
+			height:500px;
+			padding: 0.5rem;
+			box-sizing: border-box;
+			overflow: hidden;
+			background: #eae9ea;
+			border-radius: 10px;
+			box-shadow: 1px 2px 3px #c5cad0;
+		}
+		/*模态框主体*/
+		.modal-box-content  input{
+		background: #f8f8f8;
+		}
+		/*模态框主体*/
+		.kl-content  input{
+			background: #f8f8f8;
+		}
+
+		/*模态框底部*/
+		.modal-box-bottom {
+			width: 100%;
+			height: 50px;
+			border-top: 1px solid #cccccc;
+			padding: 0.5rem;
+			overflow: hidden;
+			box-sizing: border-box;
+		}
+		/*模态框底部*/
+		.kl-bottom {
+			width: 100%;
+			height: 50px;
+			border-top: 1px solid #cccccc;
+			padding: 0.5rem;
+			overflow: hidden;
+			box-sizing: border-box;
+		}
+
+
+		/*模态框标题*/
+		.modal-box-title {
+			/*使用浮动此属性可写可不写 浮动元素都会变成块元素*/
+			display: block;
+			text-align: center;
+			font-size:20px;
+			font-weight: bold;
+			/*右浮动*/
+			float: left;
+		}
+		/*模态框标题*/
+		.kl-title {
+			/*使用浮动此属性可写可不写 浮动元素都会变成块元素*/
+			display: block;
+			text-align: center;
+			font-size:20px;
+			font-weight: bold;
+			/*右浮动*/
+			float: left;
+		}
+
+		/*关闭按钮*/
+		.modal-close {
+			/*绝对定位，相对于 static 定位以外的第一个父元素进行定位*/
+			position: absolute;
+			/*定位在顶部的右侧*/
+			top: 0;
+			right: 0;
+			height: 100%;
+			width:100px;
+			background-color: white;
+			color: #a5a5a5;
+			/*outline: none;*/
+		}
+
+
+	</style>
+</head>
+
+<body>
+	<div class="navbar">
+		<div class="row">
+			<div class="column column-30 col-site-title"><a href="#" class="site-title float-left">趣味短视频</a></div>
+			<div class="column column-40 col-search"><a href="#" class="search-btn fa fa-search"></a>
+				<input type="text" name="" value="" placeholder="Search..." />
+			</div>
+			<div class="column column-30">
+				<div class="user-section"><a href="#">
+
+					<div class="username">
+						<h4>Jane Donovan</h4>
+						<p>Administrator</p>
+					</div>
+				</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="sidebar" class="column">
+			<h5>标签栏</h5>
+			<ul>
+				<li><a href="#"><em class="fa fa-home">home</em> </a></li>
+				<li><a href="#charts"><em class="fa fa-bar-chart"></em>用户管理</a></li>
+				<li><a href="#widgets"><em class="fa fa fa-clone"></em> 小说管理</a></li>
+				<li><a href="#forms"><em class="fa fa-pencil-square-o"></em>视频管理</a></li>
+				<li><a href="#alerts"><em class="fa fa-warning"></em> 漫画管理</a></li>
+				<li><a href="#buttons"><em class="fa fa-hand-o-up"></em> 设置</a></li>
+			</ul>
+		</div>
+		<section id="main-content" class="column column-offset-20">
+			<div class="row grid-responsive">
+
+					<div class="large-card">
+						<h1>消息栏!</h1>
+						<p class="text-large">This is a big 'ole hero unit, you can use this for calling extra attention to featured content or information.</p>
+						<p>You could also add a call to action button. <em>(it's basically a jumbotron)</em></p>
+						<a id="mkl" onclick="tainjia()" class="button">添加公告</a><input id="tianjiagonggao" type="text" style="margin-left:20px" placeholder="请输入添加内容">
+						<div class="ibox-content" id="gongao_Table"  th:fragment="gongao_Table">
+						<table class="table">
+							<thead>
+							<tr >
+								<th width="100px" >id</th>
+								<th width="100px" >公告内容</th>
+								<th width="100px" >类型(1为系统公告，2为用户消息)</th>
+								<th width="100px">操作1</th>
+							</tr>
+							</thead>
+
+							<tbody >
+							<tr th:each="gonggap:${gongdao_list}">
+								<td th:text="${gonggap.id}">1</td>
+								<td th:text="${gonggap.content}">张三</td>
+								<td th:text="${gonggap.type}">张三</td>
+								<td><button  th:onclick="|gonggaoshanchu(${gonggap.id})|" class="gonggaoshsanchu">删除</button></td>
+							</tr>
+
+							</tbody>
+
+						</table>
+						</div>
+					</div>
+				</div>
+
+			
+			<!--用户管理-->
+			<h5>用户管理</h5><a class="anchor" name="charts"></a>
+			<div class="row grid-responsive">
+				<div class="large-card">
+					<div class="col-sm-6">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5 style="display: inline-block">用户管理</h5>
+								<div class="ibox-tools" style="display: inline-block">
+                             <button  style="margin-left: 200px" onclick="tainjiayonghu()">添加</button>
+								</div>
+									<div class="col-sm-3" >
+										<div  style="display: inline-block" >
+											<button type="button" style="display: inline-block" id="findBtn" onclick="serach()"> 搜索</button>
+											<input id="search" type="text" placeholder="请输入关键词" class="input-sm form-control" style="display: inline-block;width: 300px">
+										</div>
+									</div>
+								</div>
+
+							<div class="ibox-content" id="userTable"  th:fragment="userTable">
+
+								<table class="table">
+									<thead>
+									<tr >
+										<th width="100px" >id</th>
+										<th width="100px" >姓名</th>
+										<th width="100px" >账号</th>
+										<th width="100px" > 密码</th>
+										<th width="100px" >性别</th>
+										<th width="100px">操作1</th>
+										<th width="100px">操作2</th>
+									</tr>
+									</thead>
+
+									<tbody >
+									<tr th:each="user:${user_list}">
+										<td th:text="${user.id}">1</td>
+										<td th:text="${user.user_name}">张三</td>
+										<td th:text="${user.zhanghao}">123</td>
+										<td th:text="${user.password}">23</td>
+										<td th:text="${user.sex}">男</td>
+										<td><button  th:onclick="|updateSubmitBtn(${user.id})|" class="updateSubmitBtn">更改</button></td>
+										<td><button th:onclick="|deleteBtn(${user.id})|" class="deleteBtn">删除</button></td>
+									</tr>
+
+									</tbody>
+
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row grid-responsive">
+				<div class="column column-33">
+					<div class="card">
+						<div class="card-title">
+							<h2>Pie Chart</h2>
+						</div>
+						<div class="card-block">
+							<div class="canvas-wrapper">
+								<canvas class="chart" id="pie-chart" height="auto" width="auto"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column column-33">
+					<div class="card">
+						<div class="card-title">
+							<h2>Radar Chart</h2>
+						</div>
+						<div class="card-block">
+							<div class="canvas-wrapper">
+								<canvas class="chart" id="radar-chart" height="auto" width="auto"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column column-33">
+					<div class="card">
+						<div class="card-title">
+							<h2>Polar Chart</h2>
+						</div>
+						<div class="card-block">
+							<div class="canvas-wrapper">
+								<canvas class="chart" id="polar-area-chart" height="auto" width="auto"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--小说管理-->
+			<h5 class="mt-2">小说管理</h5><a class="anchor" name="widgets"></a>
+			<div class="row grid-responsive mt-1">
+				<div class="large-card">
+					<div class="col-sm-6">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5 style="display: inline-block">小说管理</h5>
+								<div class="ibox-tools" style="display: inline-block">
+									<button  style="margin-left: 200px" onclick="xiaoshuotianjia()">添加</button>
+								</div>
+								<div class="col-sm-3" >
+									<div  style="display: inline-block" >
+										<button type="button" style="display: inline-block" id="xiaoshuofindBtn" onclick="xiaoshuo_serach()"> 搜索</button>
+										<input id="xiaoshuo_search" type="text" placeholder="请输入关键词" class="input-sm form-control" style="display: inline-block;width: 300px">
+									</div>
+								</div>
+							</div>
+
+							<div class="ibox-content" id="xiaoshuo_Table"  th:fragment="xiaoshuo_Table">
+
+								<table class="table">
+									<thead>
+									<tr >
+										<th width="100px" >id</th>
+										<th width="100px" >小说图片地址</th>
+										<th width="100px" >小说名称</th>
+										<th width="100px" >小说内容</th>
+										<th width="100px" >小说地址</th>
+										<th width="100px">操作1</th>
+										<th width="100px">操作2</th>
+									</tr>
+									</thead>
+
+									<tbody >
+									<tr th:each="xiaoshuo:${xiaoshuo_list}">
+										<td th:text="${xiaoshuo.id}">1</td>
+										<td th:text="${xiaoshuo.xiaoshuo_image}">张三</td>
+										<td th:text="${xiaoshuo.title}">123</td>
+										<td th:text="${xiaoshuo.content}">23</td>
+										<td th:text="${xiaoshuo.address}">男</td>
+										<td><button  th:onclick="|xiaoshuo_updateSubmitBtn(${xiaoshuo.id})|" class="xiaoshuo_updateSubmitBtn">更改</button></td>
+										<td><button th:onclick="|xiaoshuodeleteBtn(${xiaoshuo.id})|" class="xiaoshuodeleteBtn">删除</button></td>
+									</tr>
+
+									</tbody>
+
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--视频管理-->
+			<h5 class="mt-2">视频管理</h5><a class="anchor" name="forms"></a>
+			<div class="row grid-responsive">
+				<div class="column ">
+					<div class="large-card">
+						<div class="col-sm-6">
+							<div class="ibox float-e-margins">
+								<div class="ibox-title">
+									<h5 style="display: inline-block">视频管理</h5>
+									<div class="ibox-tools" style="display: inline-block">
+										<button  style="margin-left: 200px" onclick="video_tianjia()">添加</button>
+									</div>
+									<div class="col-sm-3" >
+										<div  style="display: inline-block" >
+											<button type="button" style="display: inline-block" id="video_findBtn" onclick="video_serach()"> 搜索</button>
+											<input id="video_search" type="text" placeholder="请输入关键词" class="input-sm form-control" style="display: inline-block;width: 300px">
+										</div>
+									</div>
+								</div>
+
+								<div class="ibox-content" id="video_Table"  th:fragment="video_Table">
+
+									<table class="table">
+										<thead>
+										<tr >
+											<th width="100px" >id</th>
+											<th width="100px" >视频名称</th>
+											<th width="100px" >视频图片地址</th>
+											<th width="100px" >视频地址</th>
+											<th width="100px">操作1</th>
+											<th width="100px">操作2</th>
+										</tr>
+										</thead>
+
+										<tbody >
+										<tr th:each="video:${video_list}">
+											<td th:text="${video.id}">1</td>
+											<td th:text="${video.video_name}">张三</td>
+											<td th:text="${video.video_image}">123</td>
+											<td th:text="${video.video_address}">23</td>
+											<td><button  th:onclick="|video_updateSubmitBtn(${video.id})|" class="video_updateSubmitBtn">更改</button></td>
+											<td><button th:onclick="|video_deleteBtn(${video.id})|" class="video_deleteBtn">删除</button></td>
+										</tr>
+
+										</tbody>
+
+									</table>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--漫画管理-->
+			<h5 class="mt-2">漫画管理</h5><a class="anchor" name="alerts"></a>
+			<div class="row grid-responsive">
+			<div class="column">
+				<div class="large-card">
+					<div class="col-sm-6">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5 style="display: inline-block">漫画管理</h5>
+								<div class="ibox-tools" style="display: inline-block">
+									<button  style="margin-left: 200px" onclick="manhua_tianjia()">添加</button>
+								</div>
+								<div class="col-sm-3" >
+									<div  style="display: inline-block" >
+										<button type="button" style="display: inline-block" id="manhua_findBtn" onclick="manhua_serach()"> 搜索</button>
+										<input id="manhua_search" type="text" placeholder="请输入关键词" class="input-sm form-control" style="display: inline-block;width: 300px">
+									</div>
+								</div>
+							</div>
+
+							<div class="ibox-content" id="manhua_Table"  th:fragment="manhua_Table">
+
+								<table class="table">
+									<thead>
+									<tr >
+										<th width="100px" >id</th>
+										<th width="100px" >漫画图片地址</th>
+										<th width="100px" >漫画名称</th>
+										<th width="100px" >漫画详情</th>
+										<th width="100px" >漫画地址</th>
+										<th width="100px">操作1</th>
+										<th width="100px">操作2</th>
+									</tr>
+									</thead>
+
+									<tbody >
+									<tr th:each="manhua:${manhua_list}">
+										<td th:text="${manhua.id}">1</td>
+										<td th:text="${manhua.image_manhua}">张三</td>
+										<td th:text="${manhua.title}">123</td>
+										<td th:text="${manhua.content}">23</td>
+										<td th:text="${manhua.address}">23</td>
+										<td><button  th:onclick="|manhua_updateSubmitBtn(${manhua.id})|" class="manhua_updateSubmitBtn">更改</button></td>
+										<td><button th:onclick="|manhua_deleteBtn(${manhua.id})|" class="manhua_deleteBtn">删除</button></td>
+									</tr>
+
+									</tbody>
+
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<!--设置-->
+			<h5 class="mt-2">Buttons</h5><a class="anchor" name="buttons"></a>
+			<div class="row grid-responsive">
+				<div class="column">
+					<!-- Default Button -->
+					<a class="button" href="#">Default Button</a>
+					
+					<!-- Outlined Button -->
+					<button class="button button-outline">Outlined Button</button>
+					
+					<!-- Clear Button -->
+					<input class="button button-clear" type="submit" value="Clear Button">
+				</div>
+			</div>
+
+			<!--Grid-->
+			<h5 class="mt-2">Grid</h5><a class="anchor" name="grid"></a>
+			<div class="grid-example mt-2">
+				<div class="row">
+					<div class="column column-10">10%</div>
+				</div>
+				<div class="row">
+					<div class="column column-20">20%</div>
+				</div>
+				<div class="row">
+					<div class="column column-25">25%</div>
+				</div>
+				<div class="row">
+					<!-- .column-33 or .column-34 both work for 1/3 column width -->
+					<div class="column column-33">33%</div>
+				</div>
+				<div class="row">
+					<div class="column column-40">40%</div>
+				</div>
+				<div class="row">
+					<div class="column column-50">50%</div>
+				</div>
+				<div class="row">
+					<div class="column column-60">60%</div>
+				</div>
+				<div class="row">
+					<!-- .column-66 or .column-67 both work for 2/3 column width -->
+					<div class="column column-67">67%</div>
+				</div>
+				<div class="row">
+					<div class="column column-75">75%</div>
+				</div>
+				<div class="row">
+					<div class="column column-80">80%</div>
+				</div>
+				<div class="row">
+					<div class="column column-90">90%</div>
+				</div>
+				<div class="row">
+					<div class="column">100%</div>
+				</div>
+			</div>
+			<p class="credit">HTML5 Admin Template by <a href="https://www.medialoot.com">Medialoot</a></p>
+		</section>
+	</div>
+
+	<!--添加模态框-->
+	<div class="modal-box" id="modal-form-add">
+		<!--顶部-->
+		<div class="modal-box-top">
+			<div class="modal-box-title" >用户添加</div>
+			<button onclick="modalClose()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="modal-box-content">
+		请输入id<input type="text" >
+			请输入姓名<input type="text" id="addUserName" >
+			请输入账号<input type="text" id="addNickname">
+			请输入密码<input type="text" id="addPassword">
+			请输入性别<input type="text" >
+		</div>
+		<!--底部-->
+		<div class="modal-box-bottom">
+			<button STYLE="width: 100px" id="addSubmitBtn"  >确定</button>
+		</div>
+	</div>
+
+	<div class="xiaoshuo" id="xiaoshuo-add">
+		<!--顶部-->
+		<div class="modal-box-top">
+			<div class="modal-box-title" >小说添加</div>
+			<button onclick="xiaoshuoaddclos()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="modal-box-content">
+			请输入小说图片地址<input type="text" id="xiaoshuo1">
+			请输入小说名称<input type="text"  id="xiaoshuo2">
+			请输入小说内容<input type="text" id="xiaoshuo3">
+			请输入小说地址<input type="text" id="xiaoshuo4" >
+		</div>
+		<!--底部-->
+		<div class="modal-box-bottom">
+			<button STYLE="width: 100px" id="xiaoshuo_addSubmitBtn"  >确定</button>
+		</div>
+	</div>
+
+	<div class="video" id="video-add">
+		<!--顶部-->
+		<div class="modal-box-top">
+			<div class="modal-box-title" >视频添加</div>
+			<button onclick="videoaddclos()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="modal-box-content">
+			请输入视频名称<input type="text" id="video1">
+			请输入视频图片<input type="text"  id="video2">
+			请输入视频地址<input type="text"  id="video3">
+		</div>
+		<!--底部-->
+		<div class="modal-box-bottom">
+			<button STYLE="width: 100px" id="video_addSubmitBtn"  >确定</button>
+		</div>
+	</div>
+
+	<div class="manhua" id="manhua-add">
+		<!--顶部-->
+		<div class="modal-box-top">
+			<div class="modal-box-title" >漫画添加</div>
+			<button onclick="manhuaaddclos()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="modal-box-content">
+			请输入漫画图片<input type="text" id="manhua1" >
+			请输入漫画名称<input type="text"  id="manhua2">
+			请输入漫画详情<input type="text" id="manhua3">
+			请输入漫画地址<input type="text" id="manhua4">
+		</div>
+		<!--底部-->
+		<div class="modal-box-bottom">
+			<button STYLE="width: 100px" id="manhua_addSubmitBtn"  >确定</button>
+		</div>
+	</div>
+
+
+	<!--修改模态框-->
+	<div class="kl" id="kl">
+		<!--顶部-->
+		<div class="kl-top">
+			<div class="modal-box-title" >用户修改</div>
+			<button onclick="modalClose2()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="kl-content">
+			请输入姓名<input type="text" id="updateNickname">
+			请输入账号<input type="text" id="updateUsername">
+			请输入密码<input type="text" id="updatePassword">
+			请输入性别<input type="text" id="updateSex">
+
+		</div>
+		<!--底部-->
+		<div class="kl-bottom">
+			<button STYLE="width: 100px" id="updateBtn"  >确定</button>
+		</div>
+	</div>
+
+	<div class="xiaoshuo_update" id="xiaoshuo_update">
+		<!--顶部-->
+		<div class="kl-top">
+			<div class="modal-box-title" >小说修改</div>
+			<button onclick="xiaoshuo_Close2()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="kl-content">
+			请输入小说图片地址<input type="text" id="xiaoshuo1_update">
+			请输入小说名称<input type="text"  id="xiaoshuo2_update">
+			请输入小说内容<input type="text" id="xiaoshuo3_update">
+			请输入小说地址<input type="text" id="xiaoshuo4_update" >
+		</div>
+		<!--底部-->
+		<div class="kl-bottom">
+			<button STYLE="width: 100px" id="xiaoshuo_updateBtn"  >确定</button>
+		</div>
+	</div>
+
+	<div class="video_update" id="video_update">
+		<!--顶部-->
+		<div class="kl-top">
+			<div class="modal-box-title" >视频修改</div>
+			<button onclick="video_Close2()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="kl-content">
+			请输入视频名称<input type="text" id="video1_update">
+			请输入视频图片<input type="text"  id="video2_update">
+			请输入视频地址<input type="text"  id="video3_update">
+
+		</div>
+		<!--底部-->
+		<div class="kl-bottom">
+			<button STYLE="width: 100px" id="video_updateBtn"  >确定</button>
+		</div>
+	</div>
+
+	<div class="manhua_update" id="manhua_update">
+		<!--顶部-->
+		<div class="kl-top">
+			<div class="modal-box-title" >漫画修改</div>
+			<button onclick="manhua_Close2()" class="modal-close">取消
+			</button>
+		</div>
+		<!--主体-->
+		<div class="kl-content">
+			请输入漫画图片<input type="text" id="manhua1_update" >
+			请输入漫画名称<input type="text"  id="manhua2_update">
+			请输入漫画详情<input type="text" id="manhua3_update">
+			请输入漫画地址<input type="text" id="manhua4_update">
+
+		</div>
+		<!--底部-->
+		<div class="kl-bottom">
+			<button STYLE="width: 100px" id="manhua_updateBtn"  >确定</button>
+		</div>
+	</div>
+	
+	<script src="/js/chart.min.js"></script>
+	<script src="/js/chart-data.js"></script>
+	<script>
+	window.onload = function () {
+		var chart1 = document.getElementById("line-chart").getContext("2d");
+		window.myLine = new Chart(chart1).Line(lineChartData, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+		var chart2 = document.getElementById("bar-chart").getContext("2d");
+		window.myBar = new Chart(chart2).Bar(barChartData, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+		var chart4 = document.getElementById("pie-chart").getContext("2d");
+		window.myPie = new Chart(chart4).Pie(pieData, {
+		responsive: true,
+		segmentShowStroke: false
+		});
+		var chart5 = document.getElementById("radar-chart").getContext("2d");
+		window.myRadarChart = new Chart(chart5).Radar(radarData, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.05)",
+		angleLineColor: "rgba(0,0,0,.2)"
+		});
+		var chart6 = document.getElementById("polar-area-chart").getContext("2d");
+		window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		segmentShowStroke: false
+		});
+	};
+
+
+
+		// 添加
+		$('#mkl').click(function () {
+			var u1 = $('#tianjiagonggao').val()
+			// 非空效验
+			if (u1.length == 0){
+				alert("添加内容不能为空")
+			}else {
+				$.ajax({
+					type: 'POST',
+					url: '/user/insert4',
+					data: {
+						'content':u1, //用户名
+					},
+					success: function (data) {
+						document.getElementById("tianjiagonggao").reset()
+						// 局部刷新
+						$('#gonggao_table').html(data)
+					},
+					error: function (err) {
+						console.log(err)
+						alert("操作失败，请刷新重新尝试！")
+					}
+				})
+			}
+		})
+
+
+
+	</script>
+<!--添加模态框和模态框初始化-->
+<script th:inline="javascript">
+	var updateid=0;
+	var xiaoshuo_updateid=0;
+	var video_updateid=0;
+	var manhua_updateid=0;
+
+	function tainjiayonghu()
+	{
+modalOpen();
+	}
+	function xiaoshuotianjia()
+	{xiaoshuoaddOpen()};
+	function video_tianjia()
+	{videoaddOpen()};
+	function manhua_tianjia()
+	{ manhuaddOpen()};
+
+	// 点击修改按钮
+	function updateSubmitBtn(id) {
+		// 传递数据到弹出框
+		updateid=id;
+		modalOpen2();
+	}
+	function xiaoshuo_updateSubmitBtn(id) {
+		// 传递数据到弹出框
+		xiaoshuo_updateid=id;
+		xiaoshuo_open2();
+	}
+
+	function video_updateSubmitBtn(id) {
+		// 传递数据到弹出框
+		video_updateid=id;
+		video_open2();
+	}
+
+	function manhua_updateSubmitBtn(id) {
+		// 传递数据到弹出框
+	manhua_updateid=id;
+		manhua_open2();
+	}
+
+
+	//显示模态框
+	function modalOpen() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal = document.getElementsByClassName("modal-box")[0];
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal.style.visibility = "visible";
+	}
+
+	function xiaoshuoaddOpen() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal = document.getElementById("xiaoshuo-add");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal.style.visibility = "visible";
+	}
+
+	function videoaddOpen() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal = document.getElementById("video-add");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal.style.visibility = "visible";
+	}
+
+	function manhuaddOpen() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal = document.getElementById("manhua-add");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal.style.visibility = "visible";
+	}
+
+	//初始化模态框关闭
+	window.onload=function we() {
+		//获取模态框
+		let modal = document.getElementsByClassName("modal-box")[0];
+		//设置为不可见
+		modal.style.visibility = "hidden";
+
+		let xiaoshuo = document.getElementById("xiaoshuo-add");
+		xiaoshuo.style.visibility="hidden";
+		let video= document.getElementById("video-add");
+		video.style.visibility="hidden";
+		let manhua= document.getElementById("manhua-add");
+		manhua.style.visibility="hidden";
+
+		//获取模态框
+		let modal2 = document.getElementsByClassName("kl")[0];
+		//设置为不可见
+		modal2.style.visibility = "hidden";
+
+		let xiaoshuo2 = document.getElementById("xiaoshuo_update");
+		xiaoshuo2.style.visibility = "hidden";
+		let video2= document.getElementById("video_update");
+		video2.style.visibility="hidden";
+		let manhua2= document.getElementById("manhua_update");
+		manhua2.style.visibility="hidden";
+	}
+
+	//模态框关闭
+	function modalClose() {
+		//获取模态框
+		let modal = document.getElementsByClassName("modal-box")[0];
+		//设置为不可见
+		modal.style.visibility = "hidden";
+	}
+	function xiaoshuoaddclos()
+	{
+		//获取模态框
+		let modal = document.getElementById("xiaoshuo-add");
+		//设置为不可见
+		modal.style.visibility = "hidden";
+	};
+	function videoaddclos()
+	{//获取模态框
+		let modal = document.getElementById("video-add");
+		//设置为不可见
+		modal.style.visibility = "hidden";};
+	function manhuaaddclos()
+	{//获取模态框
+		let modal = document.getElementById("manhua-add");
+		//设置为不可见
+		modal.style.visibility = "hidden";};
+
+</script>
+
+<!--修改模态框-->
+<script>
+
+	function modalOpen2() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal2 = document.getElementById("kl");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal2.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal2.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal2.style.visibility = "visible";
+	}
+
+	//小说修改
+	function xiaoshuo_open2() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal2 = document.getElementById("xiaoshuo_update");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal2.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal2.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal2.style.visibility = "visible";
+	}
+	gonggao
+	function video_open2() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal2 = document.getElementById("video_update");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal2.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal2.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal2.style.visibility = "visible";
+	}
+
+	function manhua_open2() {
+		//获取模态框对象   getElementsByClassName获取到的是一个数组对象
+		let modal2 = document.getElementById("manhua_update");
+		//获取浏览器当前宽高
+		let documentWidth = window.innerWidth;
+		let documentHeight = window.innerHeight;
+		//获取模态框宽度
+		let modalWidth = modal2.offsetWidth;
+		//模态框距离浏览器右侧的距离就是（浏览器宽度-模态框宽）/ 2.0
+		//注意，需要把结果转为字符串类型
+		modal2.style.left = ((documentWidth - modalWidth) / 2.0).toString();
+		//设置为可见
+		modal2.style.visibility = "visible";
+	}
+
+	function modalClose2() {
+		//获取模态框
+		let modal = document.getElementById("kl");
+		//设置为不可见
+		modal.style.visibility = "hidden";
+	}
+	function xiaoshuo_Close2() {
+		//获取模态框
+		let modal = document.getElementById("xiaoshuo_update");
+		//设置为不可见
+		modal.style.visibility = "hidden";
+	}
+	function video_Close2() {
+		//获取模态框
+		let modal = document.getElementById("video_update");
+		//设置为不可见
+		modal.style.visibility = "hidden";
+	}
+	function manhua_Close2() {
+		//获取模态框
+		let modal = document.getElementById("manhua_update");
+		//设置为不可见
+		modal.style.visibility = "hidden";
+	}
+</script>
+
+
+<!--	查-->
+<script>
+	// 查询
+	function serach() {
+		// 发送GET异步请求
+		$.ajax({
+			type: 'GET',
+			url: '/user/select', // 请求路径
+			data: {
+				'search': $('#search').val()
+			},
+			success: function (data) {
+				// 局部刷新数据显示部分的div
+				$('#userTable').html(data)
+			},
+			error: function (err) {
+				console.log(err)
+				alert('操作失败，请刷新重新尝试！')
+			}
+		})
+
+
+	}
+	//小说查询
+	// 查询
+	function xiaoshuo_serach() {
+		// 发送GET异步请求
+		$.ajax({
+			type: 'GET',
+			url: '/user/select1', // 请求路径
+			data: {
+				'search': $('#xiaoshuo_search').val()
+			},
+			success: function (data) {
+				// 局部刷新数据显示部分的div
+				$('#xiaoshuo_Table').html(data)
+			},
+			error: function (err) {
+				console.log(err)
+				alert('操作失败，请刷新重新尝试！')
+			}
+		})
+
+
+	}
+//视频查询video_serach()
+	function video_serach(){
+		// 发送GET异步请求
+		$.ajax({
+			type: 'GET',
+			url: '/user/select3', // 请求路径
+			data: {
+				'search': $('#video_search').val()
+			},
+			success: function (data) {
+				// 局部刷新数据显示部分的div
+				$('#video_Table').html(data)
+			},
+			error: function (err) {
+				console.log(err)
+				alert('操作失败，请刷新重新尝试！')
+			}
+		})
+
+
+	}
+//漫画manhua_serach()
+	function manhua_serach(){
+		// 发送GET异步请求
+		$.ajax({
+			type: 'GET',
+			url: '/user/select3', // 请求路径
+			data: {
+				'search': $('#manhua_search').val()
+			},
+			success: function (data) {
+				// 局部刷新数据显示部分的div
+				$('#manhua_Table').html(data)
+			},
+			error: function (err) {
+				console.log(err)
+				alert('操作失败，请刷新重新尝试！')
+			}
+		})
+
+
+	}
+
+</script>
+<!--删-->
+<script th:inline="javascript">
+
+		//删除
+		function deleteBtn(id) {
+			// 发送请求
+			$.ajax({
+				type: 'POST',
+				url: '/user/delete',
+				data: {
+					'id': id// 编号
+				},
+				success: function (data) {
+					// 局部刷新
+					$('#userTable').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+
+		//小说删除xiaoshuodeleteBtn(${xiaoshuo.id})
+		function xiaoshuodeleteBtn(id) {
+			// 发送请求
+			$.ajax({
+				type: 'POST',
+				url: '/user/delete1',
+				data: {
+					'id': id// 编号
+				},
+				success: function (data) {
+					// 局部刷新
+					$('#xiaoshuo_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+
+		//视频删除video_deleteBtn
+		function video_deleteBtn(id) {
+			// 发送请求
+			$.ajax({
+				type: 'POST',
+				url: '/user/delete2',
+				data: {
+					'id': id// 编号
+				},
+				success: function (data) {
+					// 局部刷新
+					$('#video_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+		//漫画删除manhua_deleteBtn
+		function manhua_deleteBtn(id) {
+			// 发送请求
+			$.ajax({
+				type: 'POST',
+				url: '/user/delete3',
+				data: {
+					'id': id// 编号
+				},
+				success: function (data) {
+					// 局部刷新
+					$('#manhua_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+//gonggaoshanchu
+
+
+		function gonggaoshanchu(id) {
+			// 发送请求
+			$.ajax({
+				type: 'POST',
+				url: '/user/delete4',
+				data: {
+					'id': id// 编号
+				},
+				success: function (data) {
+					// 局部刷新
+					$('#gongao_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+	</script>
+<!--添加	-->
+<script>
+	// 添加
+	$('#addSubmitBtn').click(function () {
+	var username = $('#addUserName').val()
+	var nickname = $('#addNickname').val()
+	var password = $("#addPassword").val()
+	// 非空效验
+	if (username.length == 0){
+	alert("用户名不能为空")
+	}else if(nickname.length == 0){
+	alert("昵称不能为空")
+	}else if (password.length == 0){
+	alert("密码不能为空")
+	}else {
+	$.ajax({
+	type: 'POST',
+	url: '/user/insert',
+	data: {
+	'username': username, //用户名
+	'nickname': nickname, //昵称
+	'password': password //密码
+	},
+	success: function (data) {
+	// 关闭modal框
+	// $('#modal-form-add').modal('hide')
+		modalClose()
+	// 清空modal框里上一次的数据
+	document.getElementById("addForm").reset()
+	// 局部刷新
+		$('#userTable').html(data)
+	},
+	error: function (err) {
+	console.log(err)
+	alert("操作失败，请刷新重新尝试！")
+	}
+	})
+	}
+	})
+	//小说添加
+	$('#xiaoshuo_addSubmitBtn').click(function () {
+		var xiaoshuo_image= $('#xiaoshuo1').val()
+		var title= $('#xiaoshuo2').val()
+		var content = $("#xiaoshuo3").val()
+		var address = $("#xiaoshuo4").val()
+		// 非空效验
+		if (xiaoshuo_image.length == 0){
+			alert("用户名不能为空")
+		}else if(title.length == 0){
+			alert("昵称不能为空")
+		}else if (content.length == 0){
+			alert("密码不能为空")
+		}else {
+			$.ajax({
+				type: 'POST',
+				url: '/user/insert1',
+				data: {
+					'xiaoshuo_image': xiaoshuo_image, //用户名
+					'title': title, //昵称
+					'content': content,//密码
+					'address': address//密码
+				},
+				success: function (data) {
+
+					xiaoshuoaddclos();
+					// 清空modal框里上一次的数据
+					document.getElementById("xiaoshuo-add").reset()
+					// 局部刷新
+					$('#xiaoshuo_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+	})
+	//视频添加
+	$('#video_addSubmitBtn').click(function () {
+		var video_name= $('#video1').val()
+		var video_image= $('#video2').val()
+		var video_address = $("#video3").val()
+		// 非空效验
+		if (video_name.length == 0){
+			alert("用户名不能为空")
+		}else if(video_image.length == 0){
+			alert("昵称不能为空")
+		}else if (video_address.length == 0){
+			alert("密码不能为空")
+		}else {
+			$.ajax({
+				type: 'POST',
+				url: '/user/insert2',
+				data: {
+					'video_name': video_name,
+					'video_image': video_image,
+					'video_address': video_address,
+
+				},
+				success: function (data) {
+
+					videoaddclos();
+					// 清空modal框里上一次的数据
+					document.getElementById("video-add").reset()
+					// 局部刷新
+					$('#video_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+	})
+	//漫画添加
+	$('#manhua_addSubmitBtn').click(function () {
+		var image_manhua= $('#manhua1').val()
+		var title= $('#manhua2').val()
+		var content = $("#manhua3").val()
+		var address = $("#manhua4").val()
+		// 非空效验
+		if (image_manhua.length == 0){
+			alert("用户名不能为空")
+		}else if(title.length == 0){
+			alert("昵称不能为空")
+		}else if (content.length == 0){
+			alert("密码不能为空")
+		}else {
+			$.ajax({
+				type: 'POST',
+				url: '/user/insert3',
+				data: {
+					'image_manhua': image_manhua, //用户名
+					'title': title, //昵称
+					'content': content,//密码
+					'address': address//密码
+				},
+				success: function (data) {
+
+					manhuaaddclos()
+					// 清空modal框里上一次的数据
+					document.getElementById("#manhua_add").reset()
+					// 局部刷新
+					$('#manhua_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert("操作失败，请刷新重新尝试！")
+				}
+			})
+		}
+	})
+</script>
+<!--	修改-->
+<script>
+	//修改
+	// 修改提交
+	$('#updateBtn').click(function () {
+
+
+		var id= updateid;
+		var sex = $('#updateSex').val()
+		var username = $('#updateUsername').val()
+		var nickname = $('#updateNickname').val()
+		var password = $("#updatePassword").val()
+
+		// 非空检验
+		if (username.length ==0) {
+			alert('用户名不能为空')
+		}else if (nickname.length == 0) {
+			alert('昵称不能为空')
+		}else if (password.length == 0) {
+			alert('密码不能为空')
+		}else {
+			$.ajax({
+				type: 'POST',
+				url: '/user/update',
+				data: {
+					'id': id,
+					'sex': sex,
+					'username': username, //用户名
+					'nickname': nickname, //昵称
+					'password': password  //密码
+				},
+				success: function (data) {
+					// 关闭modal框
+					modalClose2();
+					// 清空modal框里上一次的数据
+					document.getElementById("updateForm").reset()
+					// 局部刷新
+					$('#userTable').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert('操作失败，请刷新重新尝试！')
+				}
+			})
+		}
+	})
+
+	//小说修改
+	$('#xiaoshuo_updateBtn').click(function () {
+
+
+		var xiaoshuo_image= $('#xiaoshuo1_update').val()
+		var title= $('#xiaoshuo2_update').val()
+		var content = $("#xiaoshuo3_update").val()
+		var address = $("#xiaoshuo4_update").val()
+
+		// 非空检验
+		if (xiaoshuo_image.length ==0) {
+			alert('用户名不能为空')
+		}else if (title.length == 0) {
+			alert('昵称不能为空')
+		}else if (content.length == 0) {
+			alert('密码不能为空')
+		}else {
+			$.ajax({
+				type: 'POST',
+				url: '/user/update1',
+				data: {
+					'id': xiaoshuo_updateid,
+					'xiaoshuo_image': xiaoshuo_image, //用户名
+					'title': title, //昵称
+					'content': content,//密码
+					'address': address//密码
+				},
+				success: function (data) {
+					// 关闭modal框
+					xiaoshuo_Close2();
+					// 清空modal框里上一次的数据
+					document.getElementById("updateForm").reset()
+					// 局部刷新
+					$('#xiaoshuo_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert('操作失败，请刷新重新尝试！')
+				}
+			})
+		}
+	})
+
+	//视频修改
+	$('#video_updateBtn').click(function () {
+
+
+		var video_name= $('#video1_update').val()
+		var video_image= $('#video2_update').val()
+		var video_address = $("#video3_update").val()
+		// 非空效验
+		if (video_name.length == 0){
+			alert("用户名不能为空")
+		}else if(video_image.length == 0){
+			alert("昵称不能为空")
+		}else if (video_address.length == 0){
+			alert("密码不能为空")
+		}else {
+			$.ajax({
+				type: 'POST',
+				url: '/user/update2',
+				data: {
+					'id':video_updateid,
+					'video_name': video_name,
+					'video_image': video_image,
+					'video_address': video_address,
+
+				},
+				success: function (data) {
+					// 关闭modal框
+				video_Close2();
+					// 清空modal框里上一次的数据
+					document.getElementById("updateForm").reset()
+					// 局部刷新
+					$('#video_Table').html(data)
+				},
+				error: function (err) {
+					console.log(err)
+					alert('操作失败，请刷新重新尝试！')
+				}
+			})
+		}
+	})
+	//漫画修改
+	$('#manhua_updateBtn').click(function () {
+	var image_manhua= $('#manhua1_update').val()
+	var title= $('#manhua2_update').val()
+	var content = $("#manhua3_update").val()
+	var address = $("#manhua4_update").val()
+	// 非空效验
+	if (image_manhua.length == 0){
+		alert("用户名不能为空")
+	}else if(title.length == 0){
+		alert("昵称不能为空")
+	}else if (content.length == 0){
+		alert("密码不能为空")
+	}else {
+		$.ajax({
+			type: 'POST',
+			url: '/user/update3',
+			data: {
+				'id':manhua_updateid,
+				'image_manhua': image_manhua, //用户名
+				'title': title, //昵称
+				'content': content,//密码
+				'address': address//密码
+			},
+			success: function (data) {
+
+				manhua_Close2();
+				// 清空modal框里上一次的数据
+				document.getElementById("manhua_update").reset()
+				// 局部刷新
+				$('#manhua_Table').html(data)
+			},
+			error: function (err) {
+				console.log(err)
+				alert("操作失败，请刷新重新尝试！")
+			}
+		})
+	}
+	})
+</script>
+</body>
+</html> 
